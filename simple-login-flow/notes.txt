@@ -1,0 +1,29 @@
+CSS from https://bootsnipp.com/snippets/bxzmb
+
+
+Multiple ways to implement logout
+From: https://stackoverflow.com/questions/44818357/how-to-make-logout-button-properly-work-in-html
+
+<p><a href="adminlogin.php" target="self">logout</a></p>
+
+with POST handling in logout.php
+<?php 
+// After User Click On Logout page.
+ require 'database_conn.php'; // Connection
+ session_start();    // Session start
+?>
+
+
+ <?php
+    if(isset($_POST['logout'])) {          I THINK THAT IS WHAT THIS IS DOING
+
+    if(isset($_SESSION['useremail'])){
+
+     unset($_SESSION["useremail"]);
+     session_destroy();
+     session_unset();    
+     header('Location: index.php');
+
+      }
+    }
+ ?>
