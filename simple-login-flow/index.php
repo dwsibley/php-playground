@@ -23,7 +23,7 @@
   <div>
     <h3>This the site main page</h3>
     <a href="site-page1.php"> Page 1 </a><br>
-    <a href="site-page1.php"> Page 2 </a><br>
+    <a href="site-page2.php"> Page 2 </a><br>
     <br>
   </div>
   <div>
