@@ -2,6 +2,17 @@
   session_start();
   #echo session_status();
   #echo var_dump($_SESSION)
+  $invalid_login = False;
+
+  if (isset($_POST['submit']) && !empty($_POST['username']) && !empty($_POST['password'])) {
+    if ($_POST['username'] == 'admin' && $_POST['password'] == 'admin') {
+        $_SESSION['username'] = $_POST['username'];
+        header('Location: /simple-login-flow/index.php');
+    } else {
+      $invalid_login = True;
+    }
+}
+
 ?>
 
 <html lang="en">
@@ -46,7 +57,8 @@
       <div id="login-row" class="row justify-content-center align-items-center">
         <div id="login-column" class="col-md-6">
           <div id="login-box" class="col-md-12">
-            <form id="login-form" class="form" action="process-login.php" method="post">
+            <!--<form id="login-form" class="form" action="process-login.php" method="post">-->
+            <form id="login-form" autocomplete="off" class="form" action="<?php echo($_SERVER['PHP_SELF']) ?>" method="post">
               <h3 class="text-center text-info">Login</h3>
               <div class="form-group">
                 <label for="username" class="text-info">Username:</label><br>
@@ -62,7 +74,15 @@
               <!--
               <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
               -->
-                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                <input type="submit" name="submit" class="btn btn-info btn-md" value="Submit">
+              </div>
+              <div class="text-info">
+                <?php 
+                  if ($invalid_login) {
+                    echo "<center> Invalid Login</center><br>";
+                    #echo "Invalid login";
+                  } 
+                ?>
               </div>
               <!---
               <div id="register-link" class="text-right">

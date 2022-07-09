@@ -8,5 +8,5 @@
     session_destroy();
   } 
 
-  echo "You are logged out"
+  echo 'You are logged out.  Click <a href="index.php"> here </a> to return.';
 ?>
